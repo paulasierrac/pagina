@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .gift-container {
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+            width: 400px;          /* Aumentado de 300px */
+            height: 470px;         /* Aumentado de 300px */
+        }
+
+        .gift-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
+
+        .gift-wrapper.opened {
+            transform: rotateY(180deg);
+        }
+
+        .gift {
+            width: 300px;          /* Aumentado de 200px */
+            height: 300px;         /* Aumentado de 200px */
+            background: #ff4d4d;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            backface-visibility: hidden;
+        }
+
+        .gift-top {
+            width: 320px;          /* Aumentado proporcionalmente */
+            height: 60px;          /* Aumentado proporcionalmente */
+            background: #ff6666;
+            position: absolute;
+            top: -30px;
+            left: -10px;
+        }
+
+        .gift-ribbon {
+            width: 60px;           /* Aumentado proporcionalmente */
+            height: 360px;         /* Aumentado proporcionalmente */
+            background: #ff6666;
+            position: absolute;
+            left: 120px;
+            top: -30px;
+        }
+
+        .gift-ribbon::before {
+            content: '';
+            width: 60px;
+            height: 60px;
+            background: #ff8080;
+            position: absolute;
+            top: -30px;
+            left: 0;
+            border-radius: 50%;
+        }
+
+        .message {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: center;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .ticket {
+            background: #ffd700;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            width: 90%;
+            font-weight: bold;
+            font-size: 20px;       /* Aumentado el tamaño de letra */
+        }
+
+        .combo {
+            background: #98fb98;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            width: 90%;
+            font-weight: bold;
+            font-size: 20px;       /* Aumentado el tamaño de letra */
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;       /* Aumentado el tamaño de letra */
+        }
+
+        p {
+            font-size: 18px;       /* Aumentado el tamaño de letra */
+        }
+
+        .click-instruction {
+            position: absolute;
+            bottom: -50px;
+            width: 100%;
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gift-container">
+        <div class="gift-wrapper" onclick="openGift()">
+            <div class="gift">
+                <div class="gift-top"></div>
+                <div class="gift-ribbon"></div>
+            </div>
+            <div class="message">
+                <h2>¡Sorpresa! 🎉</h2>
+                <p>Te regalo con mucho cariño:</p>
+                <div class="ticket">
+                    2 Entradas para la película que tú elijas 🎬
+                </div>
+                <div class="combo">
+                    1 Combo completo con palomitas y bebidas 🍿🥤
+                </div>
+                <p>¡Para que disfrutes de una película increíble!</p>
+            </div>
+        </div>
+        <div class="click-instruction">Haz clic en el regalo para abrirlo</div>
+    </div>
+
+    <script>
+        function openGift() {
+            document.querySelector('.gift-wrapper').classList.add('opened');
+        }
+    </script>
+</body>
+</html>
